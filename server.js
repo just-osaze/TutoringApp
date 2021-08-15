@@ -11,6 +11,9 @@
 const express = require('express');
 const connectDB = require('./db/main.js');
 require('dotenv').config(); //allows for usage of environmental variables
+//PORT
+const port = process.env.PORT || PORT;
+
 
 //connect to DB
 connectDB();
@@ -24,15 +27,10 @@ app.use(express.json({ extended: false }));
 
 //Create a basic route
 app.get('/', (req, res) => {
-  res.json ({ message: "Welcome to Tutoring App!!!" })
+  res.json ({ message: "Welcome to Tutoring App!!!" });
 });
 
-//PORT
-// const port = process.env.PORT || PORT;
-
-const port = 7168;
-
 //Listen to app connection
-app.listen(port, () => {
-  console.log(`Server started and listening on port ${port}`)
+app.listen(port, function(){
+  console.log(`app running and listening on port: ${port}`)
 });
